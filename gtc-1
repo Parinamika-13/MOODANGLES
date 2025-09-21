@@ -1,0 +1,163 @@
+Main Skills You Must Show
+
+Push a multi-folder project to a private repo
+
+git init
+
+git remote add origin <url>
+
+git add .
+
+git commit -m "msg"
+
+git push -u origin main
+
+Work with Remotes
+
+git remote -v (list)
+
+git remote add origin <url>
+
+git remote remove origin
+
+git remote rename origin upstream
+
+git remote set-url origin <new_url>
+
+git fetch origin (download only)
+
+git pull origin main (download + merge)
+
+git push origin main (upload)
+
+Branching + Switching
+
+git branch (list)
+
+git branch feature-x (create)
+
+git checkout feature-x (switch)
+
+git checkout -b new-feature (create + switch)
+
+git merge feature-x (merge into main)
+
+git branch -d feature-x (delete safe)
+
+git branch -D feature-x (force delete)
+
+git branch -r (list remote branches)
+
+git remote prune origin (clean up deleted remote branches)
+
+Undo / Fix
+
+git restore <file> (undo unstaged changes)
+
+git reset <file> (unstage)
+
+git revert <commit> (undo commit safely)
+
+git commit --amend -m "new msg" (fix commit message)
+
+git reflog + git checkout -b branch <commit> (recover deleted branch)
+
+Inspecting
+
+git status
+
+git log / git log --oneline
+
+git diff / git diff --staged
+
+git show <commit>
+
+git blame <file> (who changed a line)
+
+Stash (Save Work Temporarily)
+
+git stash
+
+git stash list
+
+git stash pop / git stash apply
+
+.gitignore
+
+Know how to create .gitignore and add patterns like *.log, node_modules/.
+
+🔹 Scenario-Based Questions (Exam Style)
+
+These are must-memorize since they’ll appear exactly as-is:
+
+Discard unstaged changes → git restore <file>
+
+Unstage file but keep changes → git reset <file>
+
+Fix last commit message → git commit --amend -m "new msg"
+
+View history → git log
+
+View changes not staged → git diff
+
+Switch branch → git checkout <branch>
+
+Recover deleted branch → git reflog + git checkout -b <branch> <commit>
+
+Push local commits → git push origin main
+
+Fetch without merge → git fetch origin
+
+Create + switch to new branch → git checkout -b search-filter
+
+Remove file from history → git filter-branch ... (but in exams they just want the idea)
+
+Merge branch → git merge <branch>
+
+Resolve conflict → edit file → git add . → git commit
+
+Ignore files → .gitignore with patterns
+
+See who changed a line → git blame file
+
+Save work without commit → git stash
+
+Restore stash → git stash pop
+
+Delete branch safely → git branch -d branch
+
+Delete branch forcefully → git branch -D branch
+
+Check if branch merged → git branch --merged
+
+🔹 Remote-Specific Questions
+
+Clone repo → git clone <url>
+
+See remotes → git remote -v
+
+Add remote → git remote add origin <url>
+
+Remove remote → git remote remove origin
+
+Rename remote → git remote rename origin upstream
+
+Change URL → git remote set-url origin <new_url>
+
+Fetch without merge → git fetch origin
+
+Pull with merge → git pull origin main
+
+Push → git push origin main
+
+First push (set upstream) → git push -u origin main
+
+List remote branches → git branch -r
+
+Prune deleted remotes → git remote prune origin
+
+Fetch specific branch → git fetch origin branch
+
+Show remote info → git remote show origin
+
+Rebase → git rebase origin/main
