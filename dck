@@ -1,0 +1,4 @@
+docker build -t <image-name>
+docker login
+docker tag myapp:1.0 <your-dockerhub-username>/<image_name>
+docker push <your-dockerhub-username>/<image_name:1.0>
