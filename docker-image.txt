@@ -1,0 +1,11 @@
+docker image 
+mvn clean package
+docker build -t imagese . //creates
+docker run -d imagese //run
+/// for push
+docker login
+docker tag imagese vahinivenkata/imagese:latest
+docker push vahinivenkata/imagese
+///// for pull
+docker pull redis
+docker run -d redis
