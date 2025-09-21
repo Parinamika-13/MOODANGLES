@@ -1,0 +1,234 @@
+Git Commands Cheat Sheet
+
+---
+
+1. **Discard local changes (unstaged)**
+
+* **Syntax:** `git restore <file>`
+* **Why:** Revert local changes before staging.
+* **Example:** `git restore app.js`
+
+2. **Remove file from staging**
+
+* **Syntax:** `git reset <file>`
+* **Why:** Unstage changes without losing edits.
+* **Example:** `git reset index.html`
+
+3. **Amend last commit message**
+
+* **Syntax:** `git commit --amend`
+* **Why:** Fix commit message before pushing.
+* **Example:** `git commit --amend -m "Correct message"`
+
+4. **View commit history**
+
+* **Syntax:** `git log --oneline --graph --decorate --all`
+* **Why:** View commits in readable format.
+* **Example:** `git log --oneline --graph`
+
+5. **Set global name and email**
+
+* **Syntax:** `git config --global user.name "Name"`
+  `git config --global user.email "email@example.com"`
+* **Why:** Identify yourself in commits.
+* **Example:** `git config --global user.name "Vahini"`
+
+6. **View unstaged changes**
+
+* **Syntax:** `git diff`
+* **Why:** See file changes before staging.
+* **Example:** `git diff style.css`
+
+7. **Switch branch**
+
+* **Syntax:** `git switch <branch>`
+* **Why:** Move to another branch.
+* **Example:** `git switch feature/login`
+
+8. **Recover deleted branch**
+
+* **Syntax:** `git reflog` + `git branch <branch> <commit>`
+* **Why:** Restore branch accidentally deleted.
+* **Example:** `git branch feature-ui 1a2b3c`
+
+9. **Push commits**
+
+* **Syntax:** `git push`
+* **Why:** Upload local commits to remote.
+* **Example:** `git push origin main`
+
+10. **Fetch without merging**
+
+* **Syntax:** `git fetch`
+* **Why:** Update local refs without affecting working branch.
+* **Example:** `git fetch origin`
+
+11. **Create and switch to new branch**
+
+* **Syntax:** `git switch -c <branch>`
+* **Why:** Start a new feature branch.
+* **Example:** `git switch -c search-filter`
+
+12. **Remove file from history**
+
+* **Syntax:** `git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch <file>' --prune-empty --tag-name-filter cat -- --all`
+* **Why:** Remove sensitive files (e.g., API keys).
+* **Example:** `git filter-branch --force --index-filter 'git rm --cached secret.txt' --prune-empty -- --all`
+
+13. **View all branches**
+
+* **Syntax:** `git branch -a`
+* **Why:** See local and remote branches.
+* **Example:** `git branch -a`
+
+14. **Merge a branch**
+
+* **Syntax:** `git merge <branch>`
+* **Why:** Combine branch into current branch.
+* **Example:** `git merge feature/signup`
+
+15. **Resolve merge conflicts**
+
+* **Steps:**
+
+  1. Edit conflicted file
+  2. `git add <file>`
+  3. `git commit` if needed
+* **Why:** Integrate conflicting changes.
+* **Example:** `git add app.js`
+
+16. **Ignore files**
+
+* **Syntax:** Add patterns in `.gitignore`
+* **Why:** Stop tracking unnecessary files.
+* **Example:** `*.log
+  node_modules/`
+
+17. **Check who last changed a line**
+
+* **Syntax:** `git blame -L <start>,<end> <file>`
+* **Why:** Debug issues by identifying last editor.
+* **Example:** `git blame -L 25,25 script.py`
+
+18. **Save work in progress**
+
+* **Syntax:** `git stash`
+* **Why:** Temporarily save changes to switch branches.
+* **Example:** `git stash`
+
+19. **Restore stashed changes**
+
+* **Syntax:** `git stash pop`
+* **Why:** Bring back saved work.
+* **Example:** `git stash pop`
+
+20. **Delete local branch**
+
+* **Syntax:** `git branch -d <branch>`
+* **Why:** Remove branch after merging.
+* **Example:** `git branch -d feature/test`
+
+21. **Safely delete merged branch**
+
+* **Syntax:** `git branch -d <branch>`
+* **Why:** Cleanup after merge.
+* **Example:** `git branch -d feature-ui`
+
+22. **Force delete unmerged branch**
+
+* **Syntax:** `git branch -D <branch>`
+* **Why:** Remove unwanted branch.
+* **Example:** `git branch -D feature-experiment`
+
+23. **Check before deleting branch**
+
+* **Why:** Ensure you’re not on the branch being deleted.
+* **Example:** `git switch main`
+
+24. **Check if branch is merged**
+
+* **Syntax:** `git branch --merged`
+* **Why:** Confirm branch can be safely deleted.
+* **Example:** `git branch --merged`
+
+25. **Delete multiple merged branches**
+
+* **Syntax:** `git branch --merged | grep 'feature-' | xargs git branch -d`
+* **Why:** Cleanup multiple merged feature branches.
+* **Example:** `git branch --merged | grep 'feature-' | xargs git branch -d`
+
+---
+
+### **Remote Repository Commands**
+
+1. **Clone remote repo**
+
+* **Syntax:** `git clone <url>`
+* **Example:** `git clone https://github.com/user/project.git`
+
+2. **View remotes**
+
+* **Syntax:** `git remote -v`
+
+3. **Add remote**
+
+* **Syntax:** `git remote add <name> <url>`
+* **Example:** `git remote add origin https://github.com/user/project.git`
+
+4. **Remove remote**
+
+* **Syntax:** `git remote remove <name>`
+* **Example:** `git remote remove origin`
+
+5. **Rename remote**
+
+* **Syntax:** `git remote rename <old> <new>`
+* **Example:** `git remote rename origin upstream`
+
+6. **Fetch updates without merging**
+
+* **Syntax:** `git fetch <remote>`
+* **Example:** `git fetch origin`
+
+7. **Pull and merge**
+
+* **Syntax:** `git pull`
+* **Example:** `git pull origin main`
+
+8. **Push commits**
+
+* **Syntax:** `git push`
+* **Example:** `git push origin main`
+
+9. **Push and set upstream**
+
+* **Syntax:** `git push -u origin <branch>`
+* **Example:** `git push -u origin feature/login`
+
+10. **Change remote URL**
+
+* **Syntax:** `git remote set-url <name> <new-url>`
+* **Example:** `git remote set-url origin https://newurl.com/repo.git`
+
+11. **List remote branches**
+
+* **Syntax:** `git branch -r`
+
+12. **Prune deleted remote branches**
+
+* **Syntax:** `git fetch --prune`
+
+13. **Fetch specific branch**
+
+* **Syntax:** `git fetch origin <branch>`
+* **Example:** `git fetch origin feature/login`
+
+14. **Show remote details**
+
+* **Syntax:** `git remote show <remote>`
+* **Example:** `git remote show origin`
+
+15. **Rebase onto remote branch**
+
+* **Syntax:** `git fetch` then `git rebase origin/<branch>`
+* **Example:** `git fetch origin && git rebase origin/main`
