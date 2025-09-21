@@ -1,0 +1,166 @@
+Smart Assessment Hub - Git Tasks
+
+---
+
+1. **Introduce yourself to Git – Configure**
+
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+```
+
+* Sets your identity for commits.
+* Check config: `git config --list`
+
+---
+
+2. **Initialize the Smart Assessment Hub project**
+
+```bash
+cd path/to/SmartAssessmentHub
+git init
+```
+
+* Starts Git tracking for the project.
+
+---
+
+3. **Commit with message “Added automated grading module”**
+
+```bash
+git add .
+git commit -m "Added automated grading module"
+```
+
+* Saves changes to the local repository with a descriptive message.
+
+---
+
+4. **Check the status of modified and staged files**
+
+```bash
+git status
+```
+
+* Shows which files are staged, modified, or untracked.
+
+---
+
+5. **View commit history with author details**
+
+```bash
+git log --pretty=format:"%h - %an, %ar : %s"
+```
+
+* Shows commit hash, author, relative time, and commit message.
+
+---
+
+6. **Create a new branch `feedback-module`**
+
+```bash
+git switch -c feedback-module
+```
+
+* Start working on a new feature independently of `main`.
+
+---
+
+7. **Merge `feedback-module` into `main`**
+
+```bash
+git switch main
+git merge feedback-module
+```
+
+* If conflicts occur:
+
+  1. Open conflicted files and resolve manually.
+  2. Stage resolved files: `git add <file>`
+  3. Complete merge: `git commit`
+
+---
+
+8. **Resolve merge conflict with `report-module` branch**
+
+```bash
+git switch main
+git merge report-module
+```
+
+* Resolve conflicts:
+
+  1. Edit conflicted files (look for `<<<<<<<`, `=======`, `>>>>>>>`).
+  2. Stage resolved files: `git add <file>`.
+  3. Complete merge: `git commit`.
+
+---
+
+9. **Create and apply a patch file**
+
+* Create patch for last commit:
+
+```bash
+git format-patch -1 HEAD
+```
+
+* Apply a `.patch` file:
+
+```bash
+git apply <patch-file-name>.patch
+```
+
+---
+
+10. **Push branch `analytics-dashboard` to GitHub**
+
+```bash
+git switch analytics-dashboard
+git push -u origin analytics-dashboard
+```
+
+* Uploads branch to remote repository and sets upstream.
+
+---
+
+11. **Fork-and-pull request workflow for [https://github.com/octocat/Spoon-Knife](https://github.com/octocat/Spoon-Knife)**
+
+* Fork the repo on GitHub.
+* Clone your fork locally:
+
+```bash
+git clone https://github.com/<your-username>/Spoon-Knife.git
+cd Spoon-Knife
+```
+
+* Create a new feature branch:
+
+```bash
+git switch -c new-feature
+```
+
+* Make changes and commit:
+
+```bash
+git add .
+git commit -m "Implemented new feature"
+```
+
+* Push branch to your fork:
+
+```bash
+git push -u origin new-feature
+```
+
+* Open a Pull Request on GitHub from `new-feature` to the original repo.
+
+---
+
+12. **Check differences between local branch and remote main**
+
+```bash
+git fetch origin
+git diff main origin/main
+```
+
+* Compare your local `main` branch with the remote `main`.
