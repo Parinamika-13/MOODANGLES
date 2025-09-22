@@ -2,3 +2,55 @@ docker build -t <image-name>
 docker login
 docker tag myapp:1.0 <your-dockerhub-username>/<image_name>
 docker push <your-dockerhub-username>/<image_name:1.0>
+
+
+PS C:\Coding\SE\practice\labinternal-1> docker build -t se_internal_practice .
+[+] Building 6.9s (7/7) FINISHED                                                                                                docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                                                            0.2s
+ => => transferring dockerfile: 243B                                                                                                            0.2s 
+ => [internal] load metadata for docker.io/library/tomcat:11.0                                                                                  0.1s
+ => [internal] load .dockerignore                                                                                                               0.1s
+ => => transferring context: 2B                                                                                                                 0.0s 
+ => [internal] load build context                                                                                                               0.3s
+ => => transferring context: 79B                                                                                                                0.1s
+ => CACHED [1/2] FROM docker.io/library/tomcat:11.0@sha256:0e81ad14ac0a9518a7c040e05b7704e815b29128dfca93ab6f8d96d01d611810                     0.3s
+ => => resolve docker.io/library/tomcat:11.0@sha256:0e81ad14ac0a9518a7c040e05b7704e815b29128dfca93ab6f8d96d01d611810                            0.2s
+ => [2/2] COPY target/*.war /usr/local/tomcat/webapps/ROOT.war                                                                                  0.8s
+ => exporting to image                                                                                                                          2.6s
+ => => exporting layers                                                                                                                         0.9s 
+ => => exporting manifest sha256:b00eb4cac504d34718bcf446efabb856139c86a86122b4321e1c783c7aa99661                                               0.1s 
+ => => exporting config sha256:be99e6c2fa560cc8f8a0b9ae747fe49fe648cb6cbd2d0825073fc3e51cc2b629                                                 0.1s 
+ => => exporting attestation manifest sha256:edd2231a80a2e61c02a3a040fdd27c6b1e79585b9d12c4872bfd1f76c28275b3                                   0.1s 
+ => => exporting manifest list sha256:45c25ed223b487c410920afc8fd5908cf44033ec37e7a358eed0e2477633a7c2                                          0.1s 
+ => => naming to docker.io/library/se_internal_practice:latest                                                                                  0.1s 
+ => => unpacking to docker.io/library/se_internal_practice:latest                                                                               0.7s 
+PS C:\Coding\SE\practice\labinternal-1> docker run -d 8086:8086 se_internal_practice
+Unable to find image '8086:8086' locally
+docker: Error response from daemon: pull access denied for 8086, repository does not exist or may require 'docker login'.
+See 'docker run --help'.
+PS C:\Coding\SE\practice\labinternal-1> docker run -d 8086:8086 se_internal_practice
+Unable to find image '8086:8086' locally
+docker: Error response from daemon: pull access denied for 8086, repository does not exist or may require 'docker login'.
+See 'docker run --help'.
+PS C:\Coding\SE\practice\labinternal-1> docker login
+Authenticating with existing credentials...
+Login Succeeded
+PS C:\Coding\SE\practice\labinternal-1> docker tag myapp:1.0 anisha/se_internal_practice           
+Error response from daemon: No such image: myapp:1.0
+PS C:\Coding\SE\practice\labinternal-1> docker tag myapp:1.0 anishapaturi/se_internal_practice
+Error response from daemon: No such image: myapp:1.0
+PS C:\Coding\SE\practice\labinternal-1> docker tag se_internal_practice:latest anishapaturi/se_internal_practice:1.0
+PS C:\Coding\SE\practice\labinternal-1> docker push anishapaturi/se_internal_practice:1.0             
+The push refers to repository [docker.io/anishapaturi/se_internal_practice]
+9f15f4d9e77a: Pushed 
+4f4fb700ef54: Mounted from library/tomcat
+c32980744a5d: Mounted from library/tomcat 
+cb527ddfa989: Mounted from library/tomcat
+797c8d7389a5: Mounted from library/tomcat
+8175d8929de8: Pushed
+eb2d782ae30b: Mounted from library/tomcat
+953cdd413371: Pushed 
+0bed5e853e5b: Mounted from library/tomcat
+f9020b298515: Pushed 
+1.0: digest: sha256:45c25ed223b487c410920afc8fd5908cf44033ec37e7a358eed0e2477633a7c2 size: 856
+PS C:\Coding\SE\practice\labinternal-1> 
