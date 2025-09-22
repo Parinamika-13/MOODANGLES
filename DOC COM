@@ -1,0 +1,57 @@
+# Use Docker Compose version 3.9
+version: "3.9"
+
+services:
+
+  # Container 1: Tomcat server running your Smart Assessment Hub app
+  tomcat:
+    image: parinamikabhanu/imagese:latest   # Your Docker Hub app image
+    container_name: tomcat_app              # Container name
+    ports:
+      - "8081:8080"                         # Map host port 8080 to container port 8080
+    depends_on:
+      - mysql                               # Wait for MySQL to start first
+    volumes:
+      - tomcat_data:/usr/local/tomcat/webapps  # Persist application files
+
+  # Container 2: MySQL database
+  mysql:
+    image: mysql:8.0
+    container_name: mysql_db
+    environment:                             # Environment variables for DB
+      MYSQL_ROOT_PASSWORD: rootpass          # Root password
+      MYSQL_DATABASE: smartdb                # Default database
+      MYSQL_USER: smartuser                  # Database user
+      MYSQL_PASSWORD: smartpass              # Database password
+    ports:
+      - "3307:3306"                          # Map host port 3306 to container port 3306
+    volumes:
+      - mysql_data:/var/lib/mysql            # Persist database files
+
+# Define persistent volumes
+volumes:
+  tomcat_data:
+  mysql_data:
+
+http://localhost:8080
+
+docker exec -it mysql_db mysql -u smartuser -p
+
+PASSWORD : smartpass
+
+USE smartdb;
+
+CREATE TABLE students (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100),
+  email VARCHAR(100)
+);
+
+SHOW TABLES;
+
+docker logs -f tomcat_app
+docker logs -f mysql_db
+
+
+docker compose down
+
