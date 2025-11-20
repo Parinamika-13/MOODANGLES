@@ -61,3 +61,14 @@ New Item-> Enter name(maven_java_test)-> freestyle -> description(Test demo) -> 
 pipeline (in the page where we have +New Item we have All below it ....next to it we have a "+" click on it) -> Build Pipeline view-> create -> description("Pipeline view") -> Upstream/Downstream("maven_java") -> Apply -> Save 
 
 
+
+WebHooks :
+1. New Item -> Name -> Pipeline -> Ok
+2. Configure -> pipeline-> Hello World Script -> Apply -> Save -> Build
+3. Configure -> Pipeline -> Syntax -> Sample Step -> Git checkout -> Git URL -> Credentials* -> Main branch -> generate Script ID -> paste script id inplace of Echo "Hello World" -> Apply -> Save -> Build 
+Credentials -> Github Settings - > Developer options -> Tokens Classic -> Generate a Classic Token -> Check all boxes and set a limited timer -> Use this as pwd and Github username as username
+4. CMD in system and type -> ngrok http <port same as jenkins> -> Copy forwarding link 
+5. Git repo settings -> Webhooks -> Create a webhook -> In payload URL -> paste ngrok link : https://ngrok......com/github-webhook/
+6. In Jenkins - > Configuration -> Triggers -> GitHub Trigger -> check the box 
+7. Make a new commit in repo and Build will automatically start
+
