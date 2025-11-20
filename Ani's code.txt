@@ -23,6 +23,17 @@ services:
       POSTGRES_DB: testdb
     ports:
       - "5432:5432"
+
+
+
+
+
+create a jenkins scripted pipeline for the online reservation sytem using repository https://github.com/archanareddyse/OLES 
+the pipeline should 
+Clone the source from github
+configure Build trigges using POll SCM to check for updated every 3 minues 
+build and test it and show the result in stage view.
+output: A working scripted pipeline that automates build and test sucessfully
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
@@ -40,4 +51,5 @@ services:
 volumes:
   mysql_data:
   postgres_data:
+
   mongo_data:
