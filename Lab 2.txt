@@ -1,0 +1,63 @@
+AWS
+modules --> Launch AWS learner lab --> click start lab --> AWS(GREEN) --> view all services --> virginia --> EC2 --> Launch instance --> Name ("PS UBUNTU") --> Ubuntu in quick start ->  Key pair create -> .pem and RSA -> Create it -> Network setting edit -> in the end u have Add Security Group -> All traffic -> Anywhere and then create it -> u need to connect -> SSH key -> powershell of .pem paste(ssh) -> After that commands -> 
+sudo su
+sudo apt-get update 
+sudo apt-get install docker.io
+git clone (Link of maven project=> lib)
+cd labinternal-1
+ls
+nano Dockerfile
+
+# Use Tomcat 9 as base image
+FROM tomcat:9.0
+
+# Copy your built WAR into Tomcat’s webapps folder
+COPY target/*.war /usr/local/tomcat/webapps/ROOT.war
+
+# Start Tomcat
+CMD ["catalina.sh", "run"]
+
+sudo docker build -t img1 .
+sudo docker images
+sudo docker run -d -p 8080:8080 img1
+Go to aws -> active link or smtg with a it starts -> paste in incognito
+
+minkube
+minkube start
+minkube status
+kubectl get deployments
+kubectl get pods
+kubectl create deployment mynginx --image=nginx
+kubectl get pods
+kubectl get deployments
+kubectl describe pods
+kubectl expose deployment mynginx --type=NodePort --port=80 --target-port=80
+kubectl get-service mynginx
+kubectl port-forward svc/nginx 80:80
+
+
+nagios
+docker images
+docker ps -a
+Docker pull jasonrivers/nagios:latest
+docker images
+docker ps 
+Docker run -p 8090:80 jasonrivers/nagios
+chrome -> http://127.0.0.1:8090 or localhost:8090
+username -> nagiosadmin
+password -> nagios
+
+
+Email notification
+Jenkins --> Manage Jenkins --> System --> (To the end) Email notification --> smtp.gmail.com --> Advanced --> Tick SMTP authen --> username is email id--> Go to ur mail id and click on manage google account --> Search for app password --> App name --> create --> u get password --> copy it and paste in the Jenkins password(below username) --> tick use SSL --> SMTP port is 456 --> Reply to address is ur username mail --> Test configuration --> Apply --> save --> open ur mail id --> u get a new mail 
+ 
+
+
+Two pipeline
+New Item -> Enter name(maven_java) -> freestyle -> decription(java demo project) -> (source code)git -> Build step -> need to add two times -> top-level in build step -> 1) clean -> 2)install -> post-build(2 add)-> 1)(Archive artifact) **/* -> 2)Item name(maven_java) -> apply -> save
+
+New Item-> Enter name(maven_java_test)-> freestyle -> description(Test demo) -> (source code)none -> Environment(delete workspace) -> build -> copy artifact from another project -> Projectname neter -> Artifact to be copied loo **/*-> post-build-> Archive artifact -> file to be copied **/*
+
+pipeline (in the page where we have +New Item we have All below it ....next to it we have a "+" click on it) -> Build Pipeline view-> create -> description("Pipeline view") -> Upstream/Downstream("maven_java") -> Apply -> Save 
+
+
