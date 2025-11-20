@@ -72,3 +72,53 @@ Credentials -> Github Settings - > Developer options -> Tokens Classic -> Genera
 6. In Jenkins - > Configuration -> Triggers -> GitHub Trigger -> check the box 
 7. Make a new commit in repo and Build will automatically start
 
+Scripted Pipeline:
+1.New Item -> Name -> Pipeline -> Ok
+2.Configure -> pipeline-> Sample Script (Paste the code below) -> Apply -> Save -> Build 
+pipeline {
+    agent any
+    tools{
+        jdk 'JAVA_HOME'
+        maven 'MAVEN_HOME'
+    }
+    stages {
+        stage('git repo & clean') {
+            steps {
+                bat "rmdir /s /q Harshitha_Jenkins_Maven || exit 0"
+                bat "git clone https://github.com/Harshitha-Macha/Harshitha_Jenkins_Maven.git"
+                bat "mvn clean -f Harshitha_Jenkins_Maven/pom.xml"
+            }
+        }
+        stage('install') {
+            steps {
+                bat "mvn install -f Harshitha_Jenkins_Maven/pom.xml" 
+            }
+        }
+        stage('test') {
+            steps {
+                bat "mvn test -f Harshitha_Jenkins_Maven/pom.xml"
+            }
+        }
+        stage('package') {
+            steps {
+                bat "mvn package -f Harshitha_Jenkins_Maven/pom.xml"
+            }
+        }
+    }
+}
+
+
+3-pipeline :
+Build : Same as Java
+Test : Same process till Build 
+Build : 1. Archive -> Same name as build , **/*
+        2. Invoke -> goal : test 
+Post-Build : 1. Archive -> **/*
+             2. Build from other project -> same name as build
+Deploy : Same as test till Build 
+Build : Copy Artifact -> Same name as test , **/*
+Post-Build : Deploy WAR/EAR Conatiner -> WAR/EAR files -> **/target/*
+                                         Context path -> /demo
+                                         Container -> new container -> Add -> Tomcat server selection -> URL of running Tomcat 
+Apply -> Save -> Build 
+        
